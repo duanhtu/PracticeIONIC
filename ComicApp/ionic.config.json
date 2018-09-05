@@ -1,0 +1,7 @@
+{
+  "name": "ComicApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
