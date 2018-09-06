@@ -1,10 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { Provider } from '../providers/provider/provider';
+import 'rxjs/Rx';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -14,9 +18,11 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  technologies : any;
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -41,4 +47,21 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  ngOnInit() {
+    this.provider.loadLocalStorage().then(data => {
+      if(data != null)
+      {
+        this.technologies = data;
+      }
+      else
+      {
+        this.http.get('../assets/data/comic.json').map(res => res.json()).subscribe(data => {
+          this.technologies =  data.data;
+          this.provider.saveLocalStorage(this.technologies);
+        })
+      }
+    })
+  }
+
 }
