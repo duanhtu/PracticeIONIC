@@ -20,7 +20,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  technologies : any;
+  comics : any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider) {
     this.initializeApp();
@@ -42,23 +42,23 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  openPage(comic) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(ListPage, { comicList :comic.comic});
   }
 
   ngOnInit() {
     this.provider.loadLocalStorage().then(data => {
       if(data != null)
       {
-        this.technologies = data;
+        this.comics = data;
       }
       else
       {
         this.http.get('../assets/data/comic.json').map(res => res.json()).subscribe(data => {
-          this.technologies =  data.data;
-          this.provider.saveLocalStorage(this.technologies);
+          this.comics =  data.data;
+          this.provider.saveLocalStorage(this.comics);
         })
       }
     })

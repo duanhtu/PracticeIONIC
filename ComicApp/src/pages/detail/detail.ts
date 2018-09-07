@@ -18,7 +18,7 @@ export class DetailPage {
   selectedItem: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.selectedItem = this.navParams.get('item');
+    this.selectedItem = this.navParams.get('content');
   }
 
   ionViewDidLoad() {

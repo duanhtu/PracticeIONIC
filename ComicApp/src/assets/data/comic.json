@@ -1,9 +1,36 @@
 {
     "data": [
-        {"id":1,"name":"Angular","description":"Front-end development framwork created by Google"},
-        {"id":2,"name":"TypeScript","description":"Superset of JavaScript"},
-        {"id":3,"name":"HTML5","description":"A collection of different JavaScript API's and new HTML markup syntax"},
-        {"id":4,"name":"Sass","description":"CSS Pre-processor for writing stylesheets with a programmatic approach"},
-        {"id":5,"name":"Apache Cordova","description":"Hybrid application development framework"}
-     ]
- }
+        {
+            "id": "T1",
+            "type": "Love",
+            "comic": [
+                {
+                    "id": "1C1",
+                    "name": "Romeo Juliet",
+                    "content": "Both DEAD"
+                },
+                {
+                    "id": "1C2",
+                    "name": "Titanic",
+                    "content": "Jack DEAD"
+                }
+            ]
+        },
+        {
+            "id": "T2",
+            "type": "FICTION",
+            "comic": [
+                {
+                    "id": "2C1",
+                    "name": "Star WAR",
+                    "content": "Who is the father of JEDI"
+                },
+                {
+                    "id": "2C2",
+                    "name": "Starstrek",
+                    "content": "SpaceShip damage"
+                }
+            ]
+        }
+    ]
+}
