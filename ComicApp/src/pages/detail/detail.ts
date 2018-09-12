@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { DetailContentPage } from '../detail-content/detail-content'
+import { DetailNamePage } from '../detail-name/detail-name'
 /**
  * Generated class for the DetailPage page.
  *
@@ -15,10 +17,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
   item: string;
-  selectedItem: any;
+  selectedItem = {};
+  name: string;
+  content: string;
+  detailContentTab = DetailContentPage
+  detailNameTab = DetailNamePage
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.selectedItem = this.navParams.get('content');
+    this.selectedItem = this.navParams.data;
+    //this.content = this.selectedItem.content;
   }
 
   ionViewDidLoad() {

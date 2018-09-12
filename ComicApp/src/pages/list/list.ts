@@ -9,12 +9,14 @@ import { DetailPage } from '../detail/detail';
 })
 export class ListPage {
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.items = navParams.get('comicList');
-
+    
+    this.items = navParams.data;
+    console.log("ListPage params =", this.items);
+    console.log("");
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
@@ -31,8 +33,6 @@ export class ListPage {
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(DetailPage, {
-      content: item.content
-    });
+    this.navCtrl.setRoot(DetailPage, item);
   }
 }

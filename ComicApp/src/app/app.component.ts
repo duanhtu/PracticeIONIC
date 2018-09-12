@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { DetailPage } from '../pages/detail/detail';
 import { Provider } from '../providers/provider/provider';
 import 'rxjs/Rx';
 
@@ -45,7 +46,7 @@ export class MyApp {
   openPage(comic) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(ListPage, { comicList :comic.comic});
+    this.nav.push(ListPage, comic.comic);
   }
 
   ngOnInit() {
