@@ -17,7 +17,7 @@ import { DetailNamePage } from '../detail-name/detail-name'
 })
 export class DetailPage {
   item: string;
-  selectedItem = {};
+  public selectedItem  = {};
   name: string;
   content: string;
   detailContentTab = DetailContentPage
@@ -25,11 +25,17 @@ export class DetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedItem = this.navParams.data;
+    console.log("Detail Page data = ", this.selectedItem);
     //this.content = this.selectedItem.content;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
+  }
+
+  goHome() {
+    console.log("Detail goHome");
+    this.navCtrl.popToRoot();
   }
 
 }

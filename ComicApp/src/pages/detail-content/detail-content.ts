@@ -13,12 +13,18 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail-content.html',
 })
 export class DetailContentPage {
-
+  content : string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.content = this.navParams.get("content");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailContentPage');
+  }
+
+  goHome() {
+    console.log("Detail Content goHome");
+    this.navCtrl.popToRoot();
   }
 
 }
