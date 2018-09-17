@@ -31,8 +31,40 @@ export class ListPage {
     // }
   }
 
+  ionViewDidLoad() {
+    console.log("ListPage DidLoad");
+  }
+
+  ionViewWillEnter() {
+    console.log("ListPage WillEnter");
+  }
+
+  ionViewDidEnter() {
+    console.log("ListPage DidEnter");
+  }
+
+  ionViewWillLeave() {
+    console.log("ListPage WillLeave");
+  }
+
+  ionViewDidLeave() {
+    console.log("ListPage DidLeave");
+  }
+
+  ionViewWillUnload() {
+    console.log("ListPage UnLoad");
+  }
+
+  ionViewCanEnter() {
+    return true;
+  }
+
+  ionViewCanLeave() {
+    return true;
+  }
+
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.setRoot(DetailPage, item);
+    this.navCtrl.push(DetailPage, item);
   }
 }
