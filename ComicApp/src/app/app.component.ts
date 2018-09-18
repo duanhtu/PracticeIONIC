@@ -21,7 +21,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  comics: any;
+  comics : any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider) {
     this.initializeApp();
@@ -51,17 +51,14 @@ export class MyApp {
 
   ngOnInit() {
     this.provider.loadLocalStorage().then(data => {
-      if (data != null) {
+      if(data != null)
+      {
         this.comics = data;
       }
-      else {
-        this.http.get('../assets/data/comic.json').map(res => {
-          console.log ("MyApp res =",res);
-          console.log ("MyApp type of res =",typeof res);
-          console.log("MyApp res.json() =", res.json());
-          console.log("MyApp type of res.json() =",typeof res.json());
-          return res.json(); }).subscribe(data => {
-          this.comics = data.data;
+      else
+      {
+        this.http.get('../assets/data/comic.json').map(res => res.json()).subscribe(data => {
+          this.comics =  data.data;
           this.provider.saveLocalStorage(this.comics);
         })
       }

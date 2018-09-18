@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
 import { DetailPage } from '../detail/detail';
+import { DetailFilmPage } from '../detail-film/detail-film';
+import { FilmApiProvider } from '../../providers/film-api/film-api'
 
 @Component({
   selector: 'page-list',
@@ -10,8 +11,8 @@ import { DetailPage } from '../detail/detail';
 export class ListPage {
   icons: string[];
   items: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  films: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public filmnApi:FilmApiProvider) {
     // If we navigated to this page, we will have an item available as a nav param
     
     this.items = navParams.data;
@@ -33,6 +34,7 @@ export class ListPage {
 
   ionViewDidLoad() {
     console.log("ListPage DidLoad");
+    this.filmnApi.getFilms().then(data => this.films = data);
   }
 
   ionViewWillEnter() {
@@ -66,5 +68,10 @@ export class ListPage {
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
     this.navCtrl.push(DetailPage, item);
+  }
+
+  filmTapped(event, film) {
+    // That's right, we're pushing to ourselves!
+    this.navCtrl.push(DetailFilmPage, film.code);
   }
 }

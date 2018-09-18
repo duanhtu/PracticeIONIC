@@ -20,6 +20,15 @@
       </div>
     </button>
   </ion-list>
+  <ion-list>
+    <button ion-item *ngFor="let film of films" (click)="filmTapped($event, film)">
+      <ion-icon [name]="film.icon" item-start></ion-icon>
+      {{film.title}}
+      <div class="item-note" item-end>
+        {{film.kind}}
+      </div>
+    </button>
+  </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>

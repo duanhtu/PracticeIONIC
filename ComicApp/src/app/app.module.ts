@@ -9,7 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DetailPage } from '../pages/detail/detail';
 import { DetailContentPage} from '../pages/detail-content/detail-content';
-import { DetailNamePage} from '../pages/detail-name/detail-name';
+import { DetailNamePage } from '../pages/detail-name/detail-name';
+import { DetailFilmPage } from '../pages/detail-film/detail-film';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +27,8 @@ import { FilmApiProvider } from '../providers/film-api/film-api';
     ListPage,
     DetailPage,
     DetailContentPage,
-    DetailNamePage
+    DetailNamePage,
+    DetailFilmPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { FilmApiProvider } from '../providers/film-api/film-api';
     ListPage,
     DetailPage,
     DetailContentPage,
-    DetailNamePage
+    DetailNamePage,
+    DetailFilmPage
   ],
   providers: [
     StatusBar,

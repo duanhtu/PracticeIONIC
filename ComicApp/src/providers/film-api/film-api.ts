@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -10,8 +10,17 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FilmApiProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
     console.log('Hello FilmApiProvider Provider');
   }
+  
+  getFilms() {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:58395/api/values').subscribe(res => resolve(res.json()));
+    });
+  }
 
+  getFilm(id) {
+    return this.http.get('http://localhost:58395/api/values/' + id).map(res => res.json());
+  }
 }
