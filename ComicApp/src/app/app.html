@@ -11,6 +11,11 @@
         {{p.type}}
       </button>
     </ion-list>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of comics" (click)="openPage(p)">
+        {{p.type}}
+      </button>
+    </ion-list>
   </ion-content>
 </ion-menu>
 

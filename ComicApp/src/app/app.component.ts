@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { DetailPage } from '../pages/detail/detail';
 import { Provider } from '../providers/provider/provider';
+import { DatabaseProvider } from '../providers/database/database'
+import { ENV } from '@app/env'
 import 'rxjs/Rx';
 
 
@@ -23,15 +25,16 @@ export class MyApp {
 
   comics : any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider) {
-    this.initializeApp();
+  type = [];
 
+  environment :string = ENV.mode;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider, private databaseProvider: DatabaseProvider) {
+    this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];
-
   }
 
   initializeApp() {
@@ -40,6 +43,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.databaseProvider.init();
+    
     });
   }
 
@@ -47,6 +52,7 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.push(ListPage, comic.comic);
+    console.log("Appcomponent environment = ", this.environment);
   }
 
   ngOnInit() {

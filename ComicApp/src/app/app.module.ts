@@ -19,6 +19,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { IonicStorageModule } from '@ionic/storage';
 import { Provider } from '../providers/provider/provider';
 import { FilmApiProvider } from '../providers/film-api/film-api';
+import { DatabaseProvider } from '../providers/database/database';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { FilmApiProvider } from '../providers/film-api/film-api';
     SQLite,
     SQLitePorter,
     Provider,
-    FilmApiProvider
+    FilmApiProvider,
+    DatabaseProvider
   ]
 })
 export class AppModule {}

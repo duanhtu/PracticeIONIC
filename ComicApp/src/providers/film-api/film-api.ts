@@ -16,11 +16,17 @@ export class FilmApiProvider {
   
   getFilms() {
     return new Promise(resolve => {
-      this.http.get('http://localhost:58395/api/values').subscribe(res => resolve(res.json()));
+      this.http.get('http://localhost:58395/api/values').subscribe(res => {
+        console.log("getFilms res =",res);
+        console.log("getFilms res.json =", res.json());
+        resolve(res.json())});
     });
   }
 
   getFilm(id) {
-    return this.http.get('http://localhost:58395/api/values/' + id).map(res => res.json());
+    return this.http.get('http://localhost:58395/api/values/' + id).map(res => {
+      // console.log("getFilm res =",res);
+      // console.log("getFilm res.json =", res.json());
+      return res.json()});
   }
 }
