@@ -2,7 +2,8 @@ import { Type } from './../../model/Type';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SQLiteObject, SQLite } from '@ionic-native/sqlite';
-import {} from '../../model/Type'
+import { } from '../../model/Type'
+import { BehaviorSubject } from 'rxjs';
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -12,34 +13,33 @@ import {} from '../../model/Type'
 */
 @Injectable()
 export class DatabaseProvider {
-  private _DB 	: SQLiteObject;
-  private _DB_NAME : string 		= "ionic.db";
+  private database: SQLiteObject;
+  private database_name: string = "ionic.db";
+  public databaseReady = new BehaviorSubject(false);
 
-  constructor(public http: HttpClient, private _SQL        : SQLite) {
-    console.log('Hello DatabaseProvider Provider');
+  constructor(public http: HttpClient, private sqlLite: SQLite) {
+    this.sqlLite.create({ name: this.database_name, location: 'default' })
+    .then((db: SQLiteObject) => {
+      this.database = db;
+      return this.database.executeSql("CREATE TABLE IF NOT EXISTS type(id TEXT PRIMARY KEY, date TEXT)");
+    })
+    .then (res => {
+      this.getTypes().then(data => {
+        if(data.rows.length > 0)
+        {
+          this.databaseReady.next(true);
+        }
+        else
+        {
+          this.database.executeSql('INSERT INTO type VALUES(?,?)', ['T1', 'SACH GIAO KHOA']);
+          this.databaseReady.next(true);
+        }
+      })
+    })
   }
 
-  public init () {
-    this._SQL.create({
-      name 		  : this._DB_NAME,
-      location 	  : 'default'
-   })
-   .then((db: SQLiteObject) =>
-   {
-     this._DB = db;
-     return this._DB.executeSql('CREATE TABLE IF NOT EXISTS type(id TEXT PRIMARY KEY, date TEXT)');
-   })
-   .then(res => {
-     return this._DB.executeSql('INSERT INTO type VALUES(?,?)',['T1', 'SACH GIAO KHOA']);
-   })
-   .catch((e) =>
-   {
-      console.log(e);
-   });
-  }
-
-  public getType(): Promise<any> {
-    return this._DB.executeSql('SELECT * FROM TYPE');
+  public getTypes(): Promise<any> {
+    return this.database.executeSql('SELECT * FROM TYPE');
   }
 
 }
