@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { DetailPage } from '../pages/detail/detail';
 import { Provider } from '../providers/provider/provider';
 import { DatabaseProvider } from '../providers/database/database';
 import 'rxjs/Rx';
@@ -38,7 +37,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //this.databaseProvider.init();
       this.databaseProvider.databaseReady.subscribe((data) => {
         if(data)
         {
