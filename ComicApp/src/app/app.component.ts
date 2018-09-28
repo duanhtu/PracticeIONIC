@@ -43,6 +43,12 @@ export class MyApp {
           this.getAllTypes();
         }
       });
+      this.platform.resume.subscribe ((result) => {
+        console.log("App Resume");
+      });
+      this.platform.pause.subscribe((result) => {
+        console.log("App pause");
+      })
     });
   }
 
@@ -62,14 +68,14 @@ export class MyApp {
   }
 
   ngOnInit() {
-    this.provider.loadLocalStorage().then(data => {
+    this.provider.loadLocalStorage('comic').then(data => {
       if (data != null) {
         this.comics = data;
       }
       else {
         this.http.get('../assets/data/comic.json').map(res => res.json()).subscribe(data => {
           this.comics = data.data;
-          this.provider.saveLocalStorage(this.comics);
+          this.provider.saveLocalStorage('comic',this.comics);
         })
       }
     })

@@ -25,6 +25,11 @@ export class DatabaseProvider {
           if(data.rows.length > 0)
           {
             this.databaseReady.next(true);
+            // let sql = "alter table `ComicData` add des varchar(255) ";
+            // this.database.executeSql(sql, []).then(res => {
+            //   this.databaseReady.next(true);
+            //   console.log('db_excuted');
+            // });
           }
           else
           {
@@ -42,5 +47,7 @@ export class DatabaseProvider {
   public getTypes(): Promise<any> {
     return this.database.executeSql('SELECT * FROM `ComicData`',[]);
   }
+
+  
 
 }

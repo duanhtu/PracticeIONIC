@@ -1,0 +1,1 @@
+alter table `ComicData` add author varchar(255) 

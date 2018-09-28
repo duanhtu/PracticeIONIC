@@ -15,11 +15,11 @@ export class Provider {
     console.log('Hello Provider Provider');
   }
 
-  saveLocalStorage(comicData: any) {
-    this.storage.set('comic', comicData);
+  saveLocalStorage(key: string,data:any) {
+    this.storage.set(key, data);
   }
 
-  loadLocalStorage() {
-    return this.storage.get('comic');
+  loadLocalStorage(key: string) {
+    return this.storage.get(key);
   }
 }
