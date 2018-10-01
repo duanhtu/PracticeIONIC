@@ -43,6 +43,8 @@ export class MyApp {
           this.getAllTypes();
         }
       });
+      this.databaseProvider.init();
+      this.databaseProvider.migrateData();
       this.platform.resume.subscribe ((result) => {
         console.log("App Resume");
       });
