@@ -1,0 +1,1 @@
+alter table `Comic` add author14 varchar(255) 

@@ -1,0 +1,1 @@
+alter table `ComicData` add year varchar(255) 

@@ -7,6 +7,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SafeResourceUrl } from '../../../node_modules/@angular/platform-browser';
 import { Item } from '../../../node_modules/ionic-angular/umd';
 import 'rxjs/Rx';
+import {} from '../../assets/'
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -79,9 +80,9 @@ export class DatabaseProvider {
   }
 
   public migrateData() {
-    this.http.get("../../assets/SQLRegistry.json").map((res:any) => res.json()).subscribe(data => {
-      let sqlRegistry: Array<string> = data;
-      this.provider.loadLocalStorage("migrate").then(data => {
+    this.http.get("../../assets/SQLCommands/SQLRegistry.json").subscribe(data => {
+      let sqlRegistry: any = data;
+      this.provider.loadLocalStorage("SQLmigrate").then(data => {
         let sqlExcute: Array<string>
         if (data) {
           let sqlMigrate: Array<string> = data;
@@ -92,15 +93,17 @@ export class DatabaseProvider {
         }
         else {
           sqlExcute = sqlRegistry
+          data = [];
         }
         if (sqlExcute.length > 0) {
           sqlExcute.forEach(async item => {
-            let sql = await this.http.get("../../assets/SQLCommands/" + item + ".sql", { responseType: 'text' }).toPromise();
+            console.log();
+            let sqlURL = "../../assets/SQLCommands/" + item + ".sql";
+            let sql = await this.http.get(sqlURL, { responseType: 'text' }).toPromise();
             await this.sqlPorter.importSqlToDb(this.database, sql);
             data.push(item);
+            this.provider.saveLocalStorage("SQLmigrate", data);
           })
-
-          this.provider.saveLocalStorage("migrate", data);
         }
       })
     });

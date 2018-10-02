@@ -1,3 +1,4 @@
 [
-    "add_author_to_ComicData"
+    "add_author_to_ComicData_table",
+    "add_year_to_ComicData_table"
 ]
