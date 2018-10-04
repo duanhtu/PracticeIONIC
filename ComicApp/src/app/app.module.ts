@@ -11,6 +11,7 @@ import { DetailPage } from '../pages/detail/detail';
 import { DetailContentPage} from '../pages/detail-content/detail-content';
 import { DetailNamePage } from '../pages/detail-name/detail-name';
 import { DetailFilmPage } from '../pages/detail-film/detail-film';
+import { StudentPage } from '../pages/student/student';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DetailPage,
     DetailContentPage,
     DetailNamePage,
-    DetailFilmPage
+    DetailFilmPage,
+    StudentPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DetailPage,
     DetailContentPage,
     DetailNamePage,
-    DetailFilmPage
+    DetailFilmPage,
+    StudentPage
   ],
   providers: [
     StatusBar,

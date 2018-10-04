@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { StudentPage } from '../pages/student/student';
 import { Provider } from '../providers/provider/provider';
 import { DatabaseProvider } from '../providers/database/database';
 import { Store } from '@ngrx/store';
@@ -14,13 +15,14 @@ import * as reducer from '../reducers'
 import * as filmActions from '../actions/film.actions'
 import { Observable } from 'rxjs/Rx';
 import { Film } from '../models/film';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = StudentPage;
   comics: any;
   type = [];
   films: Observable<Film[]>;
@@ -35,7 +37,7 @@ export class MyApp {
       { title: 'List', component: ListPage }
     ];
     this.films = this.store.select('films').select(state => state.films);
-    this.store.dispatch(new filmActions.LoadFilmsAction());
+    //this.store.dispatch(new filmActions.LoadFilmsAction());
   }
 
   initializeApp() {
@@ -76,6 +78,9 @@ export class MyApp {
     this.nav.push(ListPage, comic.comic);
   }
 
+  openStudent(){
+    this.nav.push(StudentPage);
+  }
   ngOnInit() {
     this.provider.loadLocalStorage('comic').then(data => {
       if (data != null) {
