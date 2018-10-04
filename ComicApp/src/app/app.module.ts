@@ -20,6 +20,11 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Provider } from '../providers/provider/provider';
 import { FilmApiProvider } from '../providers/film-api/film-api';
 import { DatabaseProvider } from '../providers/database/database';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../reducers';
+import { FilmEffects } from '../effects/film.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { DatabaseProvider } from '../providers/database/database';
     HttpModule,
     IonicStorageModule.forRoot(),
     HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([FilmEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 5
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

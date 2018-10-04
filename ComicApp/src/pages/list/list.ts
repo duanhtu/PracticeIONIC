@@ -34,7 +34,7 @@ export class ListPage {
 
   ionViewDidLoad() {
     console.log("ListPage DidLoad");
-    this.filmnApi.getFilms().then(data => this.films = data);
+    //this.filmnApi.getFilms().then(data => this.films = data);
   }
 
   ionViewWillEnter() {

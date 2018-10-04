@@ -7,7 +7,6 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SafeResourceUrl } from '../../../node_modules/@angular/platform-browser';
 import { Item } from '../../../node_modules/ionic-angular/umd';
 import 'rxjs/Rx';
-import {} from '../../assets/'
 
 /*
   Generated class for the DatabaseProvider provider.

@@ -8,9 +8,12 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Provider } from '../providers/provider/provider';
 import { DatabaseProvider } from '../providers/database/database';
+import { Store } from '@ngrx/store';
 import 'rxjs/Rx';
-
-
+import * as reducer from '../reducers' 
+import * as filmActions from '../actions/film.actions'
+import { Observable } from 'rxjs/Rx';
+import { Film } from '../models/film';
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,17 +21,21 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-  pages: Array<{ title: string, component: any }>;
   comics: any;
   type = [];
+  films: Observable<Film[]>;
+  pages: Array<{ title: string, component: any }>;
+
  
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider, private databaseProvider: DatabaseProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider, private databaseProvider: DatabaseProvider, private store: Store<reducer.State>) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];
+    this.films = this.store.select('films').select(state => state.films);
+    this.store.dispatch(new filmActions.LoadFilmsAction());
   }
 
   initializeApp() {
@@ -37,14 +44,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.databaseProvider.databaseReady.subscribe((data) => {
-        if(data)
-        {
-          this.getAllTypes();
-        }
-      });
-      this.databaseProvider.init();
-      this.databaseProvider.migrateData();
+      // this.databaseProvider.databaseReady.subscribe((data) => {
+      //   if(data)
+      //   {
+      //     this.getAllTypes();
+      //   }
+      // });
+      //this.databaseProvider.init();
+      //this.databaseProvider.migrateData();
       this.platform.resume.subscribe ((result) => {
         console.log("App Resume");
       });

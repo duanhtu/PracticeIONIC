@@ -13,13 +13,18 @@ export class FilmApiProvider {
   constructor(public http: Http) {
     console.log('Hello FilmApiProvider Provider');
   }
-  
+
   getFilms() {
-    return new Promise(resolve => {
-      this.http.get('http://localhost:58395/api/values').subscribe(res => {
-        console.log("getFilms res =",res);
-        console.log("getFilms res.json =", res.json());
-        resolve(res.json())});
+    // return new Promise(resolve => {
+    //   this.http.get('http://localhost:58395/api/values').subscribe(res => {
+    //     console.log("getFilms res =",res);
+    //     console.log("getFilms res.json =", res.json());
+    //     resolve(res.json())});
+    // });
+    return this.http.get('http://localhost:58395/api/values').map(res => {
+      // console.log("getFilm res =",res);
+      // console.log("getFilm res.json =", res.json());
+      return res.json()
     });
   }
 
@@ -27,6 +32,7 @@ export class FilmApiProvider {
     return this.http.get('http://localhost:58395/api/values/' + id).map(res => {
       // console.log("getFilm res =",res);
       // console.log("getFilm res.json =", res.json());
-      return res.json()});
+      return res.json()
+    });
   }
 }
