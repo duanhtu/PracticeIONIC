@@ -1,3 +1,4 @@
+import { AddStudentAction } from './../actions/student.actions';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http'; 
@@ -12,6 +13,8 @@ import { DetailContentPage} from '../pages/detail-content/detail-content';
 import { DetailNamePage } from '../pages/detail-name/detail-name';
 import { DetailFilmPage } from '../pages/detail-film/detail-film';
 import { StudentPage } from '../pages/student/student';
+import { EditStudentPage } from '../pages/edit-student/edit-student';
+import { AddStudentPage } from '../pages/add-student/add-student';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,6 +29,7 @@ import { reducers } from '../reducers';
 import { FilmEffects } from '../effects/film.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DetailContentPage,
     DetailNamePage,
     DetailFilmPage,
-    StudentPage
+    StudentPage,
+    EditStudentPage,
+    AddStudentPage
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreDevtoolsModule.instrument({
       maxAge: 5
     }),
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,7 +66,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DetailContentPage,
     DetailNamePage,
     DetailFilmPage,
-    StudentPage
+    StudentPage,
+    EditStudentPage,
+    AddStudentPage
   ],
   providers: [
     StatusBar,

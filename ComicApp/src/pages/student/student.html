@@ -23,10 +23,16 @@
         {{p.name}}
       </ion-col>
       <ion-col>
-        {{p.class}}
+        {{p.classRoom}}
       </ion-col>
       <ion-col>
-        <button ion-button  (click)="deleteStudent(p)">
+        <button ion-button (click)="addStudent(p)">
+          Add
+        </button>
+        <button ion-button (click)="editStudent(p)">
+          EDIT
+        </button>
+        <button ion-button (click)="deleteStudent(p)">
           DELETE
         </button>
       </ion-col>

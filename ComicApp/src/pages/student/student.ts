@@ -5,6 +5,8 @@ import * as reducer from '../../reducers'
 import * as studentsActions from '../../actions/student.actions'
 import { Student } from 'models/student';
 import { Observable } from 'rxjs/Rx';
+import { EditStudentPage } from '../edit-student/edit-student';
+import { AddStudentPage } from '../add-student/add-student';
 
 /**
  * Generated class for the StudentPage page.
@@ -31,5 +33,13 @@ export class StudentPage {
 
   deleteStudent(student) {
     this.store.dispatch(new studentsActions.DeleteStudentAction(student));
+  }
+
+  editStudent(student) {
+    this.navCtrl.push(EditStudentPage,student);
+  }
+
+  addStudent(student) {
+    this.navCtrl.push(AddStudentPage,student);
   }
 }

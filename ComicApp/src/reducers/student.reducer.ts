@@ -6,7 +6,7 @@ export interface State {
    
 };
 
-export function studentReducer(state = {student: [{id:'T1',name:'Tu', class: 'A3'}, {id:'T2', name: 'Huan', class: "A4"}] }, action: fromStudents.Actions): State {
+export function studentReducer(state = {student: [{id:'T1',name:'Tu', classRoom: 'A3'}, {id:'T2', name: 'Huan', classRoom: "A4"}] }, action: fromStudents.Actions): State {
     switch (action.type) {
         case fromStudents.LOAD_STUDENTS: {
             return  state = state;
@@ -17,6 +17,24 @@ export function studentReducer(state = {student: [{id:'T1',name:'Tu', class: 'A3
             newStudents.splice( newStudents.indexOf(student), 1);
             return {
                 student: newStudents
+            }
+        }
+        case fromStudents.EDIT_STUDENT:{
+            let student = action.student;
+            let studentEdit = action.studentEdit;
+            let newStudents = Object.assign([],state.student);
+            let indexEdit = newStudents.indexOf(student);
+            newStudents[indexEdit] = studentEdit;
+            return {
+                student : newStudents
+            }
+        }
+        case fromStudents.ADD_STUDENT: {
+            let student = action.student;
+            let newStudents = Object.assign([],state.student);
+            newStudents.push(student);
+            return {
+                student : newStudents
             }
         }
 
