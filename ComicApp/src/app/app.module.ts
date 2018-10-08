@@ -1,4 +1,3 @@
-import { AddStudentAction } from './../actions/student.actions';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http'; 
@@ -15,6 +14,7 @@ import { DetailFilmPage } from '../pages/detail-film/detail-film';
 import { StudentPage } from '../pages/student/student';
 import { EditStudentPage } from '../pages/edit-student/edit-student';
 import { AddStudentPage } from '../pages/add-student/add-student';
+import { AddScorePage } from '../pages/add-score/add-score';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -42,7 +42,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailFilmPage,
     StudentPage,
     EditStudentPage,
-    AddStudentPage
+    AddStudentPage,
+    AddScorePage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailFilmPage,
     StudentPage,
     EditStudentPage,
-    AddStudentPage
+    AddStudentPage,
+    AddScorePage
   ],
   providers: [
     StatusBar,

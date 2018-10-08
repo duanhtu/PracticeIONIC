@@ -1,10 +1,12 @@
 import { Action } from '@ngrx/store';
 import { Student } from 'models/student';
+import { Score } from '../models/score';
 
 export const LOAD_STUDENTS = 'LOAD_STUDENTS';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
 export const EDIT_STUDENT = 'EDIT_STUDENT';
 export const ADD_STUDENT = 'ADD_STUDENT';
+export const ADD_SCORE = 'ADD_SCORE';
 
 export class LoadStudentsAction implements Action {
     readonly type = LOAD_STUDENTS;
@@ -30,8 +32,15 @@ export class AddStudentAction implements Action {
     constructor(public student: Student) { }
 }
 
+export class AddScoreAction implements Action {
+    readonly type = ADD_SCORE;
+
+    constructor(public score: Score) { }
+}
+
 export type Actions
     = LoadStudentsAction
     | DeleteStudentAction
     | EditStudentAction
     | AddStudentAction
+    |AddScoreAction

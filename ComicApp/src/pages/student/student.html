@@ -14,7 +14,22 @@
 
 
 <ion-content padding>
+  <h1>STUDENT</h1>
   <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>ID</h2>
+      </ion-col>
+      <ion-col>
+        <h2>NAME</h2>
+      </ion-col>
+      <ion-col>
+        <h2>TOTAL</h2>
+      </ion-col>
+      <ion-col>
+        <h2>PASS</h2>
+      </ion-col>
+    </ion-row>
     <ion-row *ngFor="let p of student$ | async">
       <ion-col>
         {{p.id}}
@@ -23,19 +38,64 @@
         {{p.name}}
       </ion-col>
       <ion-col>
-        {{p.classRoom}}
+        {{p.total}}
       </ion-col>
       <ion-col>
-        <button ion-button (click)="addStudent(p)">
-          Add
-        </button>
-        <button ion-button (click)="editStudent(p)">
-          EDIT
-        </button>
-        <button ion-button (click)="deleteStudent(p)">
+        {{p.pass}}
+      </ion-col>
+      <ion-col>
+        <button ion-button float-right (click)="deleteStudent(p)">
           DELETE
+        </button>
+        <button ion-button float-right (click)="editStudent(p)">
+          EDIT
         </button>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <button ion-button float-right (click)="addStudent()">
+    ADD
+  </button>
+  <h1>SCORE</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>ID</h2>
+      </ion-col>
+      <ion-col>
+        <h2>MATH</h2>
+      </ion-col>
+      <ion-col>
+        <h2>PHYSICS</h2>
+      </ion-col>
+      <ion-col>
+        <h2>CHEMISTRY</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let p of score$ | async">
+      <ion-col>
+        {{p.id}}
+      </ion-col>
+      <ion-col>
+        {{p.math}}
+      </ion-col>
+      <ion-col>
+        {{p.physics}}
+      </ion-col>
+      <ion-col>
+        {{p.chemistry}}
+      </ion-col>
+      <ion-col>
+        <button ion-button float-right (click)="deleteStudent(p)">
+          DELETE
+        </button>
+        <button ion-button float-right (click)="editStudent(p)">
+          EDIT
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button float-right (click)="addScore()">
+    ADD
+  </button>
 </ion-content>

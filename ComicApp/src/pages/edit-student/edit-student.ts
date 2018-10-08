@@ -28,10 +28,10 @@ export class EditStudentPage {
     this.group = new FormGroup({
       Id: new FormControl(this.student.id),
       Name: new FormControl (this.student.name),
-      Class: new FormControl (this.student.classRoom)
+     
     });
     this.group.valueChanges.subscribe((data) => {
-      this.studentEdit = new Student(data.Id,data.Name, data.Class);
+      this.studentEdit = new Student(data.Id,data.Name);
     });
   }
 

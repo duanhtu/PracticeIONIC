@@ -1,3 +1,4 @@
+import { Score } from 'models/score';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Store } from '@ngrx/store';
@@ -7,6 +8,7 @@ import { Student } from 'models/student';
 import { Observable } from 'rxjs/Rx';
 import { EditStudentPage } from '../edit-student/edit-student';
 import { AddStudentPage } from '../add-student/add-student';
+import { AddScorePage } from '../add-score/add-score';
 
 /**
  * Generated class for the StudentPage page.
@@ -22,12 +24,14 @@ import { AddStudentPage } from '../add-student/add-student';
 })
 export class StudentPage {
   student$ : Observable<Student[]>;
+  score$ : Observable<Score[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams,  private store: Store<reducer.State>) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StudentPage');
-    this.student$ = this.store.select('student').select(state => state.student);
+    this.student$ = this.store.select('student').select(state => state.students);
+    this.score$ = this.store.select('student').select(state => state.scores);
     this.store.dispatch(new studentsActions.LoadStudentsAction());
   }
 
@@ -39,7 +43,11 @@ export class StudentPage {
     this.navCtrl.push(EditStudentPage,student);
   }
 
-  addStudent(student) {
-    this.navCtrl.push(AddStudentPage,student);
+  addStudent() {
+    this.navCtrl.push(AddStudentPage);
+  }
+
+  addScore() {
+    this.navCtrl.push(AddScorePage);
   }
 }

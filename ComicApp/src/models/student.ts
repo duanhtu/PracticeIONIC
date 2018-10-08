@@ -1,12 +1,12 @@
 export class Student {
     id: string
     name: string
-    classRoom: string
+    total: number
+    pass: boolean
 
-    constructor(id , name, classRoom) {
+    constructor(id , name) {
         this.id = id;
         this.name = name;
-        this.classRoom = classRoom;
     }
 }
 
