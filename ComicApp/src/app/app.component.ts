@@ -29,14 +29,14 @@ export class MyApp {
   pages: Array<{ title: string, component: any }>;
 
  
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public http: Http, private provider: Provider, private databaseProvider: DatabaseProvider, private store: Store<reducer.State>) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,/* public http: Http, private provider: Provider, private databaseProvider: DatabaseProvider, private store: Store<reducer.State>*/) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];
-    this.films = this.store.select('films').select(state => state.films);
+    //this.films = this.store.select('films').select(state => state.films);
     //this.store.dispatch(new filmActions.LoadFilmsAction());
   }
 
@@ -64,12 +64,12 @@ export class MyApp {
   }
 
   getAllTypes() {
-    this.databaseProvider.getTypes().then(data => {
-      for(let i = 0; i < data.rows.length; i++) {
-        let item = data.rows.item(i);
-        this.type.push(item);
-      }
-    })
+    // this.databaseProvider.getTypes().then(data => {
+    //   for(let i = 0; i < data.rows.length; i++) {
+    //     let item = data.rows.item(i);
+    //     this.type.push(item);
+    //   }
+    // })
   }
 
   openPage(comic) {
@@ -82,17 +82,17 @@ export class MyApp {
     this.nav.push(StudentPage);
   }
   ngOnInit() {
-    this.provider.loadLocalStorage('comic').then(data => {
-      if (data != null) {
-        this.comics = data;
-      }
-      else {
-        this.http.get('../assets/data/comic.json').map(res => res.json()).subscribe(data => {
-          this.comics = data.data;
-          this.provider.saveLocalStorage('comic',this.comics);
-        })
-      }
-    })
+    // this.provider.loadLocalStorage('comic').then(data => {
+    //   if (data != null) {
+    //     this.comics = data;
+    //   }
+    //   else {
+    //     this.http.get('../assets/data/comic.json').map(res => res.json()).subscribe(data => {
+    //       this.comics = data.data;
+    //       this.provider.saveLocalStorage('comic',this.comics);
+    //     })
+    //   }
+    // })
   }
 
 }

@@ -1,3 +1,4 @@
+import { StudentEffects } from './../effects/student.effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http'; 
@@ -24,12 +25,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Provider } from '../providers/provider/provider';
 import { FilmApiProvider } from '../providers/film-api/film-api';
 import { DatabaseProvider } from '../providers/database/database';
+import { StudentApiProvider } from '../providers/student-api/student-api';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../reducers';
 import { FilmEffects } from '../effects/film.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     IonicStorageModule.forRoot(),
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([FilmEffects]),
+    EffectsModule.forRoot([FilmEffects, StudentEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 5
     }),
@@ -80,7 +83,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SQLitePorter,
     Provider,
     FilmApiProvider,
-    DatabaseProvider
+    DatabaseProvider,
+    StudentApiProvider
   ]
 })
 export class AppModule {}

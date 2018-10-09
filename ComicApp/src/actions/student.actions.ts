@@ -3,6 +3,7 @@ import { Student } from 'models/student';
 import { Score } from '../models/score';
 
 export const LOAD_STUDENTS = 'LOAD_STUDENTS';
+export const LOAD_STUDENTS_SUCCESS = 'LOAD_STUDENT_SUCCESS';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
 export const EDIT_STUDENT = 'EDIT_STUDENT';
 export const ADD_STUDENT = 'ADD_STUDENT';
@@ -12,6 +13,12 @@ export class LoadStudentsAction implements Action {
     readonly type = LOAD_STUDENTS;
 
     constructor() { }
+}
+
+export class LoadStudentsSuccessAction implements Action {
+    readonly type = LOAD_STUDENTS_SUCCESS;
+
+    constructor(public students: Student[]) { }
 }
 
 export class DeleteStudentAction implements Action {
@@ -40,7 +47,8 @@ export class AddScoreAction implements Action {
 
 export type Actions
     = LoadStudentsAction
+    | LoadStudentsSuccessAction
     | DeleteStudentAction
     | EditStudentAction
     | AddStudentAction
-    |AddScoreAction
+    | AddScoreAction

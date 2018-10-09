@@ -55,12 +55,13 @@ export function studentReducer(state = {students: [], scores: []}, action: fromS
                 students: newStudents
             }
         }
-        // case fromStudents.LOAD_FILMS: {
-        //     return state = {
-        //         films: [],
-        //         isLoading : true
-        //     };
-        // }
+        case fromStudents.LOAD_STUDENTS_SUCCESS: {
+            const students = action.students;
+            return {
+                ...state,
+                students : students
+            }
+        }
         default: {
             return state;
         }
