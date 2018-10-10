@@ -11,6 +11,8 @@ import {
 import { Http } from '@angular/http';
 import { Provider } from '../providers/provider/provider';
 import { DatabaseProvider } from '../providers/database/database';
+import { reducers } from '../reducers';
+import { StoreModule } from '@ngrx/store';
 
 describe('MyApp Component', () => {
   let fixture;
@@ -20,12 +22,14 @@ describe('MyApp Component', () => {
     TestBed.configureTestingModule({
       declarations: [MyApp],
       imports: [
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        StoreModule.forRoot(reducers),
       ],
       providers: [
         { provide: StatusBar, useClass: StatusBarMock },
         { provide: SplashScreen, useClass: SplashScreenMock },
         { provide: Platform, useClass: PlatformMock },
+        {provide: Http}
       ]
     })
   }));

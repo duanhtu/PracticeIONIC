@@ -29,7 +29,7 @@ export class MyApp {
   pages: Array<{ title: string, component: any }>;
 
  
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,/* public http: Http, private provider: Provider, private databaseProvider: DatabaseProvider, private store: Store<reducer.State>*/) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public http: Http,/* private provider: Provider, private databaseProvider: DatabaseProvider,*/ private store: Store<reducer.State>) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
