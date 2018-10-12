@@ -1,3 +1,4 @@
+import { Film } from './../../models/film';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -5,6 +6,7 @@ import { Student } from '../../models/student';
 import { Store, Action } from '@ngrx/store';
 import * as reducer from '../../reducers' 
 import * as studentsActions from '../../actions/student.actions'
+import * as filmsActions from '../../actions/film.actions'
 
 /**
  * Generated class for the AddStudentPage page.
@@ -37,7 +39,8 @@ export class AddStudentPage {
   }
 
   addStudent() {
-    this.store.dispatch(new studentsActions.AddStudentAction(this.student));
+    //this.store.dispatch(new studentsActions.AddStudentAction(this.student));
+    this.store.dispatch(new filmsActions.AddFilmAction(new Film('T2222','Haloween',100,'Love')));
   }
 
 }

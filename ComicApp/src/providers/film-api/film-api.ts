@@ -1,3 +1,4 @@
+import { Film } from './../../models/film';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -34,5 +35,9 @@ export class FilmApiProvider {
       // console.log("getFilm res.json =", res.json());
       return res.json()
     });
+  }
+
+  addFilm(film: Film) {
+    return this.http.post('http://localhost:58395/api/values', film);
   }
 }

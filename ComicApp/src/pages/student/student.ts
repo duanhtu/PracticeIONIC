@@ -33,6 +33,7 @@ export class StudentPage {
     this.student$ = this.store.select('student').select(state => state.students);
     this.score$ = this.store.select('student').select(state => state.scores);
     this.store.dispatch(new studentsActions.LoadStudentsAction());
+    console.log();
   }
 
   deleteStudent(student) {

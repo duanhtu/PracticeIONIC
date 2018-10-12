@@ -3,7 +3,7 @@
     <name>ComicApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://172.29.76.113:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -85,5 +85,5 @@
     <plugin name="cordova-sqlite-storage" spec="^2.4.0" />
     <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="^1.0.5" />
     <allow-navigation href="http://172.29.76.113:8100" sessionid="9ad1f986" />
-    <engine name="android" spec="7.0.0" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

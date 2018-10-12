@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { FilmApiProvider } from './../providers/film-api/film-api';
 import { Injectable } from '@angular/core';
-import { Actions, Effect} from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import * as filmActions from '../actions/film.actions';
 import { Observable } from 'rxjs/Rx';
@@ -14,10 +14,18 @@ export class FilmEffects {
     ) { }
 
     // tslint:disable-next-line:member-ordering
-    @Effect() loadFilm$:Observable<Action> = this.actions$
+    @Effect() loadFilm$: Observable<Action> = this.actions$
         .ofType(filmActions.LOAD_FILMS)
         .switchMap(() => {
             return this.filmApiProvider.getFilms()
                 .map(films => new filmActions.LoadFilmsSuccessAction(films));
         });
+
+    @Effect() addFilm$: Observable<Action> = this.actions$
+        .ofType(filmActions.ADD_FILM)
+        .map((action: filmActions.AddFilmAction) => action.payload)
+        .switchMap((item) => {
+            return this.filmApiProvider.addFilm(item)
+            .map(() => new filmActions.AddFilmSuccessAction());
+        })
 };
