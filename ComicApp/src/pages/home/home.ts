@@ -5,34 +5,66 @@ import { NavController } from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage  {
 
   constructor(public navCtrl: NavController) {
 
   }
+
+  // ngOnChanges() {
+  //   console.log("Home ngOnChanges");
+  // }
+
+  // ngOnInit() {
+  //   console.log("Home ngOnInit");
+  // }
+
+  // ngDoCheck() {
+  //   console.log("Home ngDoCheck");
+  // }
+
+  // ngAfterContentInit() {
+  //   console.log("Home ngAfterContentInit");
+  // }
+
+  // ngAfterContentChecked() {
+  //   console.log("Home ngAfterContentChecked");
+  // }
+
+  // ngAfterViewInit() {
+  //   console.log("Home ngAfterViewInit");
+  // }
+
+  // ngAfterViewChecked() {
+  //   console.log("Home ngAfterViewChecked");
+  // }
+
+  // ngOnDestroy() {
+  //   console.log("Home ngOnDestroy");
+  // }
 
   ionViewDidLoad() {
     console.log("Home DidLoad");
   } 
 
   ionViewWillEnter() {
-    console.log("Home WillEnter");
+    console.log("HomePage WillEnter");
   }
 
   ionViewDidEnter() {
-    console.log("Home DidEnter");
+    console.log("HomePage DidEnter");
   }
 
   ionViewWillLeave() {
-    console.log("Home WillLeave");
+    console.log("HomePage WillLeave");
   }
 
   ionViewDidLeave() {
-    console.log("Home DidLeave");
+    console.log("HomePage DidLeave");
   }
 
   ionViewWillUnload() {
-    console.log("Home UnLoad");
+    console.log("HomePage UnLoad");
   }
 
 }

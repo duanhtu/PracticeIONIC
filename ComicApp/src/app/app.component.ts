@@ -22,7 +22,7 @@ import { Film } from '../models/film';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StudentPage;
+  rootPage: any = HomePage;
   comics: any;
   type = [];
   films: Observable<Film[]>;

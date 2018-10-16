@@ -40,7 +40,8 @@ export class AddStudentPage {
 
   addStudent() {
     //this.store.dispatch(new studentsActions.AddStudentAction(this.student));
-    this.store.dispatch(new filmsActions.AddFilmAction(new Film('T2222','Haloween',100,'Love')));
+    const code = Math.floor(Math.random() * 9000) + 1000;
+    this.store.dispatch(new filmsActions.AddFilmAction(new Film(code.toString(),'Ngoi Sao Co Don',100,'Horor')));
   }
 
 }

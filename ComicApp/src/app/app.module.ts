@@ -16,6 +16,7 @@ import { StudentPage } from '../pages/student/student';
 import { EditStudentPage } from '../pages/edit-student/edit-student';
 import { AddStudentPage } from '../pages/add-student/add-student';
 import { AddScorePage } from '../pages/add-score/add-score';
+import { HomeComponent } from '../components/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -46,7 +47,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StudentPage,
     EditStudentPage,
     AddStudentPage,
-    AddScorePage
+    AddScorePage,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
