@@ -11,10 +11,12 @@ import { Provider } from '../providers/provider/provider';
 import { DatabaseProvider } from '../providers/database/database';
 import { Store } from '@ngrx/store';
 import 'rxjs/Rx';
-import * as reducer from '../reducers' 
+import * as reducer from '../reducers'
 import * as filmActions from '../actions/film.actions'
 import { Observable } from 'rxjs/Rx';
 import { Film } from '../models/film';
+import { FilmApiProvider } from '../providers/film-api/film-api';
+import { NativeHttpProvider } from '../providers/native-http/native-http';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,11 +27,20 @@ export class MyApp {
   rootPage: any = HomePage;
   comics: any;
   type = [];
-  films: Observable<Film[]>;
+  films: any;
   pages: Array<{ title: string, component: any }>;
 
- 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public http: Http,/* private provider: Provider, private databaseProvider: DatabaseProvider,*/ private store: Store<reducer.State>) {
+
+  constructor(public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public http: Http,
+    /* private provider: Provider,
+     private databaseProvider: DatabaseProvider,*/
+    private store: Store<reducer.State>,
+    private filmProvider: FilmApiProvider,
+    private nativeHTTPProvider: NativeHttpProvider
+  ) {
     this.initializeApp();
     // used for an example of ngFor and navigation
     this.pages = [
@@ -38,6 +49,9 @@ export class MyApp {
     ];
     //this.films = this.store.select('films').select(state => state.films);
     //this.store.dispatch(new filmActions.LoadFilmsAction());
+    this.nativeHTTPProvider.getFilms().subscribe(res => {
+      console.log("NativeProvider film =", res);
+    });
   }
 
   initializeApp() {
@@ -54,7 +68,7 @@ export class MyApp {
       // });
       //this.databaseProvider.init();
       //this.databaseProvider.migrateData();
-      this.platform.resume.subscribe ((result) => {
+      this.platform.resume.subscribe((result) => {
         console.log("App Resume");
       });
       this.platform.pause.subscribe((result) => {
@@ -78,7 +92,7 @@ export class MyApp {
     this.nav.push(ListPage, comic.comic);
   }
 
-  openStudent(){
+  openStudent() {
     this.nav.push(StudentPage);
   }
   ngOnInit() {

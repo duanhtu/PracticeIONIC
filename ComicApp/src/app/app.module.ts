@@ -16,7 +16,6 @@ import { StudentPage } from '../pages/student/student';
 import { EditStudentPage } from '../pages/edit-student/edit-student';
 import { AddStudentPage } from '../pages/add-student/add-student';
 import { AddScorePage } from '../pages/add-score/add-score';
-import { HomeComponent } from '../components/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +32,9 @@ import { FilmEffects } from '../effects/film.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularHttpProvider } from '../providers/angular-http/angular-http';
+import { NativeHttpProvider } from '../providers/native-http/native-http';
+import { HTTP } from '@ionic-native/http';
 
 
 @NgModule({
@@ -48,7 +50,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditStudentPage,
     AddStudentPage,
     AddScorePage,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +87,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     Provider,
     FilmApiProvider,
     DatabaseProvider,
-    StudentApiProvider
+    StudentApiProvider,
+    AngularHttpProvider,
+    NativeHttpProvider,
+    HTTP
   ]
 })
 export class AppModule {}
