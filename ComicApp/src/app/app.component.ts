@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Rx';
 import { Film } from '../models/film';
 import { FilmApiProvider } from '../providers/film-api/film-api';
 import { NativeHttpProvider } from '../providers/native-http/native-http';
+import { AngularHttpProvider } from '../providers/angular-http/angular-http';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +40,8 @@ export class MyApp {
      private databaseProvider: DatabaseProvider,*/
     private store: Store<reducer.State>,
     private filmProvider: FilmApiProvider,
-    private nativeHTTPProvider: NativeHttpProvider
+    private nativeHTTPProvider: NativeHttpProvider,
+    private angularHTTProvider : AngularHttpProvider
   ) {
     this.initializeApp();
     // used for an example of ngFor and navigation
@@ -49,8 +51,9 @@ export class MyApp {
     ];
     //this.films = this.store.select('films').select(state => state.films);
     //this.store.dispatch(new filmActions.LoadFilmsAction());
-    this.nativeHTTPProvider.getFilms().subscribe(res => {
-      console.log("NativeProvider film =", res);
+    this.angularHTTProvider.getFilms().subscribe(res => {
+      console.log("AngularProvider film =", res);
+      this.films = res;
     });
   }
 

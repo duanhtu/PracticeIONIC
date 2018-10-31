@@ -14,9 +14,10 @@ export class AngularHttpProvider {
     console.log('Hello AngularHttpProvider Provider');
   }
 
-  public getFilms()
-  {
-    return this.http.get('http://localhost:58395/api/values');
+  public getFilms() {
+    console.log("AngularHTTProvider getFilms");
+    let a = this.http.get('http://localhost:58395/api/values');
+    return a;
   }
 
 }

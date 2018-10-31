@@ -22,9 +22,10 @@ export class FilmApiProvider {
     //     console.log("getFilms res.json =", res.json());
     //     resolve(res.json())});
     // });
+    console.log("FilmProvider getFilms");
     return this.http.get('http://localhost:58395/api/values').map(res => {
-      // console.log("getFilm res =",res);
-      // console.log("getFilm res.json =", res.json());
+      console.log("getFilm res =",res);
+      console.log("getFilm res.json =", res.json());
       return res.json()
     });
   }
